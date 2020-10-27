@@ -74,7 +74,7 @@
 ### Final Project Presentation (11/17)
 
  * Parse and filter the output to get the final results: prioritized list of neoantigen vaccine candidates
- * *Note: things could be changed depend on the workload
+ * *Note: things could be changed depend on the feasibility
 
 
 
