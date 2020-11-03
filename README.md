@@ -57,14 +57,7 @@
 
 ### Results: Prioritized list of neoantigen vaccine candidates
 
-## Proposed Timeline
-
-### Milestone 1 (Due 11/03)
-
-* Finish the data preparation (alignment and variant calling as well as somatic mutation detection)
-* Check-point: Variant List
-
-## Milestone Update
+# Milestone Update
 ## Input Data Preparation 
 
 ### Check the data and unzip the fastq files
@@ -361,6 +354,20 @@ bam-readcount
 
 * Using the vcf-expression-annotator to add expression information to your VCF
   The vcf-expression-annotator will add expression information to your VCF. It will accept expression data from various tools. Currently it supports Cufflinks, Kallisto, StringTie, as well as a custom option for any tab-delimited file.
+```
+#Installing the vcf-readcount-annotator
+pip install vcf-annotation-tools
+
+#running vcf-expression-annotator
+vcf-expression-annotator input_vcf expression_file kallisto|stringtie|cufflinks|custom gene|transcript
+```
+
+## Proposed Timeline
+
+### Milestone 1 (Due 11/03)
+
+* Finish the data preparation (alignment and variant calling as well as somatic mutation detection)
+* Check-point: Variant List
 
 ### Milestone 2 (Due 11/12)
 
