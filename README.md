@@ -10,11 +10,7 @@
 ## Data Demonstration
 
  * Metastatic melanoma cell line (COLO829) is required in this project.
- * FASTQs for tumor and germline exomes of COLO829 is available in trgn.usc.edu. To view the data by
-
- ```
- cd /data/colo829 
- ```
+ * FASTQs for tumor and germline exomes of COLO829 is available in trgn.usc.edu.
 
 ## Proposed Analysis and Tools &Software
 
