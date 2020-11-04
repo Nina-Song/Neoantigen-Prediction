@@ -1,0 +1,76 @@
+
+------------------------------------------------------------------------------------------
+SUMMARY 
+MOST LIKELY HLA class I ALLELES (Confidence (-10 * log10(Eval)) >= 30 Score >= 1000)
+-Arranged by decreasing score, from most to less likely.
+-The prediction rank factors in the maximum score for each predicted allele.
+Allele,Score,Expect (Eval) value,Confidence (-10 * log10(Eval))
+*restricting output to top 2 highest scoring predictions per HLA gene and group. Refer to the log file for all predictions.
+------------------------------------------------------------------------------------------
+
+HLA-A
+	Prediction #1 - A*01
+		A*01:01P,381205.27,4.35e-12,113.6
+	Prediction #2 - A*11
+		A*11:335,152458.34,5.00e-07,63.0
+
+HLA-B
+	Prediction #1 - B*40
+		B*40:02P,115058.54,1.14e-13,129.4
+	Prediction #2 - B*51
+		B*51:10,113398.54,2.15e-08,76.7
+		B*51:285,113398.54,2.15e-08,76.7
+
+HLA-C
+	Prediction #1 - C*03
+		C*03:448Q,110684.00,7.85e-13,121.0
+		C*03:17P,106942.00,2.50e-12,116.0
+		C*03:05P,106942.00,2.50e-12,116.0
+		C*03:04P,106942.00,2.50e-12,116.0
+		C*03:03P,106942.00,2.50e-12,116.0
+	Prediction #2 - C*07
+		C*07:01:01:32,102248.33,3.53e-08,74.5
+		C*07:20:02,99615.00,5.47e-14,132.6
+
+HLA-E
+
+HLA-F
+
+HLA-G
+
+------------------------------------------------------------------------------------------
+SUMMARY 
+MOST LIKELY HLA class II ALLELES (Confidence (-10 * log10(Eval)) >= 30 Score >= 1000)
+-Arranged by decreasing score, from most to less likely.
+-The prediction rank factors in the maximum score for each predicted allele.
+Allele,Score,Expect (Eval) value,Confidence (-10 * log10(Eval))
+*restricting output to top 2 highest scoring predictions per HLA gene and group. Refer to the log file for all predictions.
+------------------------------------------------------------------------------------------
+
+HLA-DPA1
+
+HLA-DPB1
+
+HLA-DQA1
+
+HLA-DQB1
+
+HLA-DRA
+
+HLA-DRB1
+
+HLA-DRB2
+
+HLA-DRB3
+
+HLA-DRB4
+
+HLA-DRB5
+
+HLA-DRB6
+
+HLA-DRB7
+
+HLA-DRB8
+
+HLA-DRB9
