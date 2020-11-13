@@ -347,18 +347,50 @@ bam-readcount
 
 ```
 
-### Adding expression data to your VCF
 
-* Using the vcf-expression-annotator to add expression information to your VCF
-  The vcf-expression-annotator will add expression information to your VCF. It will accept expression data from various tools. Currently it supports Cufflinks, Kallisto, StringTie, as well as a custom option for any tab-delimited file.
 
-```
+## Perform Epitope Prediction
+
+### Adding genotype data to your VCF
+
+* For VCFs created by Strelka which does not output a GT field for its calls. This will cause the results of pVACseq shows "The TSV file is empty. Please check that the input VCF contains missense, inframe indel, or frameshift mutations." 
+* Try to modify with vcf-genotype-annotator .When running this tool specify which GT value to use (0/1) and it will append another sample to the VCF with that genotype. Then we can then use the new dummy sample name when running pVACseq and it will process all the variants in the VCF.
+
+```bash
 #Installing the vcf-readcount-annotator
-pip install vcf-annotation-tools
+pip install vatools
 
-#running vcf-expression-annotator
-vcf-expression-annotator input_vcf expression_file kallisto|stringtie|cufflinks|custom gene|transcript
+#running vcf-genotype-annotator
+vcf-genotype-annotator ~/510Final/pvacseq/test/somatic.annotated.genotype.vcf TUMOR {0/1}
 ```
+
+* After this step, `somatic.annotated.genotype.vcf` will be a result of the annotations as well as the genotype.
+
+
+
+### Run epitope prediction software
+
+* All eight prediction algrithims are used in this step to predict high affinity peptides that bind to the HLA class I molecule
+* The input to this software is the HLA class I haplotype of the patient, as well as the FASTA file generated in the previous step comprising mutated and WT 17-21-mer sequence
+* Besides the default settings, `--normal-sample-name NORMAL` is added for multiple samples input. `--top-score-metric=lowest` is added for best MT Score/Corresponding Fold Changing - lowest MT  ic50 binding score/corresponding fold change of all chosen prediction methods. `-d full` to include the full downstream sequence for frameshifts when creating the fasta file.
+
+```bash
+pvacseq run \
+~/510Final/pvacseq/test/somatic.annotated.genotype.vcf \
+TUMOR \
+HLA-A*01:01,HLA-B*40:02,HLA-C*03:03,HLA-C*07:01 \
+NetMHC \
+~/510Final/pvacseq/test/prediction_2 \
+-e 8,9,10,11 \
+--iedb-install-directory ~/510Final/VEP/IEDB/ \
+--top-score-metric=lowest -d full 
+```
+
+* Output (which can be found as the milestone 2 result in this Github repo) of pVACseq will be:
+  * `TUMOR.all_epitopes.tsv` : A list of all predicted epitopes and their binding affinity scores, with additional variant information from the `TUMOR.tsv`. (which is too big for uploading to Github)
+  * `TUMOR.filtered.tsv`: The above file after applying all filters, with cleavage site and stability predictions added.
+  * `TUMOR.filtered.condensed.ranked.tsv`: A condensed version of the filtered TSV with only the most important columns remaining, with a priority score for each neoepitope candidate added.
+* The pVACseq rank calculation detailed above is just one of many ways to prioritize neoeptiope candidates. The body of evidence in this area is still incomplete, and the methodology of ranking is likely to change substantially in future releases. While we have found this ranking useful, it is not a substitute for careful curation and validation efforts.[<sup>2</sup>](#refer-anchor-2)
 
 ## Proposed Timeline
 
